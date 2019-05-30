@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="网上购物,网上商城,进口商品，生鲜食品，家用电器，手机数码，嘉院">
+	<link rel="shortcut icon" href="http://www.bl.com/favicon.ico">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <script src="script/thirdplugins/jquery.js"></script>
+    <script src="script/thirdplugins/jquery.validate.js"></script>
+    <script src="script/js/login.js"></script>
+    <title>注册</title>
+</head>
+<body>
+    <div class="header">
+        <div class="wrap">
+            <div class="logo">
+                <div ><a href="http://127.0.0.1/js1810/bailianshangcheng/h51810/bailianshangcheng/src/index1.html"><img src="img/logo.png" alt=""></a></div>
+                <div ><a href="javascript:;"><img src="https://res13.iblimg.com/respc-1/resources/v3.0/css/i/V3login-font4.png" alt=""></a></div>
+            </div>
+        </div>
+    </div>
+    <div class="wrap">
+        <div class="main">
+            <div class="content_top">
+                <div class="title">您好，感谢您加入i嘉院</div>
+                <div class="login">如有账号，请点击 <a href="http://127.0.0.1/js1810/bailianshangcheng/h51810/bailianshangcheng/src/registor.html">登录</a></div>
+            </div>
+            <div class="content_btm">
+                <form action="http://127.0.0.1/js1810/bailianshangcheng/h51810/bailianshangcheng/php/login.php" method="POST" id='form'>
+                    <div>
+                        <div>
+                            <i>* </i><span>用户名：</span>
+                        </div>
+                        <div>
+                            <input  class="username_input" name="username" for="username" id="username" type="text" placeholder="6-20位字符，支持字母或字母与数字组合">
+                            <label id="username-error" class="error tip" for="username"></label>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <i>* </i><span>登录密码：</span>
+                        </div>
+                        <div >
+                            <input class="password_input" name="password" for="password" id="password" type="password" placeholder="8-20位字符，至少使用两种字符组合">
+                            <label id="password-error" class="error tip" for="password"></label>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <i>* </i><span>确认密码：</span>
+                        </div>
+                        <div >
+                            <input class="confirm_password_input" name="confirm_password" for="confirm_password" id="confirm_password" type="password" placeholder="请再次输入密码">
+                            <label id="confirm_password-error" class="error tip" for="confirm_password"></label>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <i>* </i><span>手机号码：</span>
+                        </div>
+                        <div>
+                            <input class="telphone_input" name="telphone" for="telphone" id="telphone" type="text" placeholder="请输入11位手机号码">
+                            <label id="telphone-error" class="error tip" for="telphone"></label>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <i>* </i><span>电子邮箱：</span>
+                        </div>
+                        <div >
+                            <input class="email_input" name="email" for="email" id="email" type="text" placeholder="请输入有效邮箱">
+                            <label id="email-error" class="error tip" for="email"></label>
+                        </div>
+                    </div>
+                    <div class="remeber">
+                        <input type="checkbox" class="checkbox" id="agree" name="agree" required>
+
+                        <span>我已阅读并同意</span>
+                        <a href="jacascript:;">《嘉院通会员注册协议》、</a>
+                        <a href="jacascript:;">《安付宝用户服务协议》、</a>
+                        <a href="jacascript:;">《安付宝隐私权政策》</a>
+                    </div>
+                    <input type="submit" class="register" name="submit" value="立即注册 完成绑定">
+                    <!-- <button nume="submit" >注册</button> -->
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="btm_style"></div>
+    <div id="footer"></div>
+</body>
+</html>

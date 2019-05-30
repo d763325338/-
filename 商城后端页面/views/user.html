@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>用户管理页</title>
+	<link rel="stylesheet" type="text/css" href="../css/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../css/themes/icon.css">
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../js/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../js/jquery.serializejson.min.js"></script>
+
+
+</head>
+<body>
+        <table id="dg"></table>
+
+
+        <div id="tb" style="padding:2px 5px;">
+            <input id="name" label="用户名称:" style="width:100%;">
+
+            <a href="#" id="searchData" class="easyui-linkbutton" iconCls="icon-search">搜索用户名</a>
+            <a href="#" id="addData" class="easyui-linkbutton" data-options="iconCls:'icon-add'">添加用户</a>
+            <!-- <a href="#" id="removesData" class="easyui-linkbutton" data-options="iconCls:'icon-remove'">Remove</a> -->
+        </div>
+
+        <div id="dlg" class="easyui-dialog" title="用户信息" data-options="iconCls:'icon-save',closed:true" style="width:400px;height:300px;padding:10px">
+
+<form id="ff" method="post" class="easyui-form" method="post" data-options="novalidate:true">
+    <div style="margin-bottom:20px">
+        <input class="easyui-textbox sid" name="sid" style="width:100%" data-options="label:'用户id:',readonly:true">
+    </div>
+ <div style="margin-bottom:20px">
+                                <input class="easyui-textbox username" name="username" style="width:100%" data-options="label:'用户名:',required:true">
+                            </div>
+
+                            <div style="margin-bottom:20px">
+                                <input class="easyui-passwordbox password"  name="password" style="width:100%" data-options="label:'密码:',required:true">
+                            </div>
+                            <div style="margin-bottom:20px">
+                                <input class="easyui-textbox telphone"  name="telphone" style="width:100%" data-options="label:'手机号:',required:true">
+                            </div>
+                            <div style="margin-bottom:20px">
+                                <input class="easyui-textbox email"  name="email" style="width:100%" data-options="label:'电子邮箱:',required:true">
+                            </div>
+                        <!-- </form> -->
+                        <div style="text-align:center;padding:5px 0">
+                            <a href="javascript:void(0)" class="easyui-linkbutton" name="submit" onclick="submitForm()" style="width:80px">提交</a>
+                            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearff()" style="width:80px">清空</a>
+                        </div>
+	    </form>
+        </div>
+        <div id="dlg1" class="easyui-dialog" title="用户信息" data-options="iconCls:'icon-save',closed:true" style="width:400px;height:300px;padding:10px">
+
+            <form id="addfrom" method="post" class="easyui-form" method="post" data-options="required:true">
+             <div style="margin-bottom:20px">
+                                            <input class="easyui-textbox username" name="username" style="width:100%" data-options="label:'用户名:',required:true">
+                                        </div>
+
+                                        <div style="margin-bottom:20px">
+                                            <input class="easyui-passwordbox password"  name="password" style="width:100%" data-options="label:'密码:',required:true">
+                                        </div>
+                                        <div style="margin-bottom:20px">
+                                            <input class="easyui-textbox telphone"  name="telphone" style="width:100%" data-options="label:'手机号:',required:true">
+                                        </div>
+                                        <div style="margin-bottom:20px">
+                                            <input class="easyui-textbox email"  name="email" style="width:100%" data-options="label:'电子邮箱:',required:true">
+                                        </div>
+                                    <!-- </form> -->
+                                    <div style="text-align:center;padding:5px 0">
+                                        <a href="javascript:void(0)" class="easyui-linkbutton" name="submit" onclick="adduser()" style="width:80px">提交</a>
+                                        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearaddfrom()" style="width:80px">清空</a>
+                                    </div>
+                    </form>
+                    </div>
+</body>
+</html>
+
+<script>
+//  function submitForm(){
+//     $('#ff').form('submit',{
+//         onSubmit:function(){
+//            if($(this).form('enableValidation').form('validate')){
+//                 // 将当前页面的表单信息进行获取，然后进行ajax请求
+//                 var formData = $("#ff").serializeJSON();
+//                 console.log(formData._id.length);
+//                 if(formData._id.length > 0){
+//                     // update
+//                     $.ajax({
+//                         url:`${window.parent.globalURL}users/${formData._id}`,
+//                         type:'put',
+//                         data: formData
+//                     }).done(function(res){
+//                         $('#dlg').dialog('close');
+//                         $('#dg').datagrid('reload');
+//                         $('#ff').form('clear');
+//                     })
+//                 }else{
+//                     // add
+//                     delete formData._id;
+//                     $.ajax({
+//                         url:`${window.parent.globalURL}users`,
+//                         type:'post',
+//                         data: formData
+//                     }).done(function(res){
+//                         $('#dlg').dialog('close');
+//                         $('#dg').datagrid('reload');
+//                         $('#ff').form('clear');
+//                     })
+
+//                 }
+
+
+//            }
+//             // 表单验证
+//         }
+
+//     });
+//     return false; // 阻止默认事件
+// }
+function clearff(){
+    $('#ff').form('clear');
+}
+function clearaddfrom(){
+    $('#addfrom').form('clear');
+}
+var apassword;
+function submitForm(){
+        $.messager.confirm('确认对话框', '你确认要修改用户信息吗?', function(r){
+        if (r){
+            console.log(apassword)
+            console.log($('#ff .password').val())
+                if(apassword==$('#ff .password').val()){
+                    $.ajax({
+                url:`http://127.0.0.1/js1810/bailianshangcheng/h51810/front/php/updateusername.php`,
+                type:'post',
+                dataType:'json',
+                data:{
+                    username:$('#ff .username').val(),
+                    telphone:$('#ff .telphone').val(),
+                    email:$('#ff .email').val(),
+                    submit:true,
+                    sid:$('#ff .sid').val()
+                }
+            }).done(function(res){
+            })
+        alert('恭喜您，用户信息修改成功')
+        $('#dlg').dialog('close');
+        $('#dg').datagrid('reload');
+                }else{
+                     $.ajax({
+                url:`http://127.0.0.1/js1810/bailianshangcheng/h51810/front/php/updateusername.php`,
+                type:'post',
+                dataType:'json',
+                data:{
+                    username:$('#ff .username').val(),
+                    telphone:$('#ff .telphone').val(),
+                    email:$('#ff .email').val(),
+                    password:$('#ff .password').val(),
+                    submit:true,
+                    sid:$('#ff .sid').val()
+                }
+            }).done(function(res){
+            })
+        alert('恭喜您，用户信息修改成功')
+        $('#dlg').dialog('close');
+        $('#dg').datagrid('reload');
+        }
+     }
+})
+}
+
+
+
+
+$('#dg').datagrid({
+    url:`http://127.0.0.1/js1810/bailianshangcheng/h51810/front/php/user.php`,
+    fit:'true',
+    border:false,
+    pagination:true,
+    toolbar:'#tb',
+    columns:[[
+        {field:'ck',checkbox:true},
+        {field:'sid',title:'用户id'},
+        {field:'username',title:'用户名',width:150},
+        {field:'password',title:'密码'},
+        {field:'telphone',title:'手机号码'},
+        {field:'email',title:'电子邮箱'},
+        {field:'time',title:'注册时间'},
+        {field:'_id',title:'操作', width:80,
+            formatter: function(value,row,index){
+				return `<a href="javascript:void(0)" onclick="updateData('${row.sid}')">修改</a> <a href="javascript:void(0)" onclick="deleteData('${row.username}')">删除</a>`
+			}
+		}
+    ]]
+});
+
+function deleteData(username){
+
+    $.messager.confirm('确认对话框', '你确认删除?', function(r){
+        if (r){
+
+            $.ajax({
+                url:`http://127.0.0.1/js1810/bailianshangcheng/h51810/front/php/user.php`,
+                type:'post',
+                dataType:'json',
+                data:{
+                    username:username
+                }
+            }).done(function(res){
+            $("#dg").datagrid('reload');
+            })
+
+        }
+    });
+
+}
+//重组数据
+function reLodadDateGrid(res){
+	var values = [];
+	 for ( var i = 0; i <res.length; i++) {
+         var a = {
+             'username' : res[i].username,
+             'password' : res[i].password,
+             'telphone' : res[i].telphone,
+             'email' : res[i].email,
+             'time' : res[i].time,
+             'sid':res[i].sid
+         };
+         values.push(a);
+     }
+	 $('#dg').datagrid('loadData', values);
+}
+
+function searchData(){
+        $.ajax({
+            url:`http://127.0.0.1/js1810/bailianshangcheng/h51810/front/php/selectuser.php`,
+            type:'post',
+            dataType:'json',
+            data:{
+                name:$('#name').val()
+            }
+        }).done(function(res){
+            console.log(res)
+            reLodadDateGrid(res)
+        })
+}
+
+function updateData(sid){
+    $.ajax({
+        url:`http://127.0.0.1/js1810/bailianshangcheng/h51810/front/php/selectuser.php`,
+        type:'post',
+        dataType:'json',
+            data:{
+                sid:sid
+            }
+    }).done(function(res){
+        $('#dlg').dialog('open');
+        var jsonData = JSON.stringify(res);// 转成JSON格式
+        var result = $.parseJSON(jsonData);// 转成JSON对象
+        console.log(result[0])
+        $('#ff').form('load',{
+				username:result[0].username,
+				password:result[0].password,
+				telphone:result[0].telphone,
+				email:result[0].email,
+                sid:result[0].sid
+			});
+            apassword=$('#ff .password').val();
+    })
+
+}
+
+function adduser(){
+    $('#addfrom').form('submit',{
+        success:function(data){
+             $.ajax({
+                url:`http://127.0.0.1/js1810/bailianshangcheng/h51810/front/php/addusername.php`,
+                type:'post',
+                dataType:'json',
+                data:{
+                    username:$('#addfrom .username').val(),
+                    telphone:$('#addfrom .telphone').val(),
+                    email:$('#addfrom .email').val(),
+                    password:$('#addfrom .password').val(),
+                    submit:true,
+                }
+            }).done(function(res){
+                alert('恭喜您，添加用户成功')
+        $('#dlg1').dialog('close');
+        $('#dg').datagrid('reload');
+            })
+        }
+    });
+}
+
+// function deleteDatas(){
+//   var rows = $('#dg').datagrid('getSelections');
+//   var ids = [];
+//   for(var i=0;i<rows.length;i++){
+//     ids.push(rows[i].username);
+//   }
+
+//   $.messager.confirm('确认对话框', '你确认删除?', function(r){
+//         if (r){
+//             $.ajax({
+//                 url:`http://127.0.0.1/js1810/bailianshangcheng/h51810/front/php/user.php`,
+//                 type:'post',
+//                 data:{
+//                     usernames: ids.toString()
+//                 }
+//             }).done(function(res){
+//                 $("#dg").datagrid('reload');
+//             })
+//         }
+//     });
+
+
+// }
+
+$("#searchData").click(function(){
+    searchData();
+})
+
+ $("#addData").click(function(){
+    $('#addfrom').form('clear');
+     $('#dlg1').dialog('open');
+})
+
+// $("#removesData").click(function(){
+//     deleteDatas();
+// })
+</script>

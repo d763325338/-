@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>后台管理</title>
+	<link rel="stylesheet" type="text/css" href="./css/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="./css/themes/icon.css">
+	<script type="text/javascript" src="./js/jquery.min.js"></script>
+	<script type="text/javascript" src="./js/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="./js/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+
+	<div class="easyui-layout" data-options="fit:true">
+		<div data-options="region:'north'" style="height:50px">
+			<div style="margin-left: 20px;margin-top: 12px;
+			font-size: 20px;"><span>后台管理系统</span></div>
+
+
+
+		</div>
+
+		<div data-options="region:'south',split:true" style="height:50px;">
+			<center>制作者：杜军  2019</center>
+		</div>
+		<div data-options="region:'west',split:true" title="管理模块" style="width:200px;">
+            <ul id="menus">
+                <li><a link="./views/user.html" href="javascript:void(0)">用户管理</a></li>
+
+                <li><a link="./views/product.html" href="javascript:void(0)">产品管理</a></li>
+
+            </ul>
+		</div>
+		<div data-options="region:'center',title:'管理内容',iconCls:'icon-ok'">
+
+            <div id="tt" class="easyui-tabs" data-options="fit:true">
+
+
+
+		</div>
+	</div>
+
+</body>
+</html>
+
+<script>
+$("#menus li a").click(function(){
+    var link =  $(this).attr('link');
+    var title = $(this).text();
+	var isSelect = $("#tt").tabs('exists', title);
+	if (isSelect) {
+		 $('#tt').tabs('select', title);
+		return;
+	}else{
+    addPanel(title,link);
+	}
+})
+
+function addPanel(title,link){
+    $('#tt').tabs('add',{
+        title: title,
+        content: `<iframe src="${link}" frameborder="0" style="width:100%;height:100%"></iframe>`,
+        closable: true,
+    });
+}
+
+$(document).ready(function(){
+	addPanel('首页','./views/main.html');
+})
+
+
+var globalURL = 'http://127.0.0.1/js1810/bailianshangcheng/h51810/bailianshangcheng/php/conn.php/';
+
+</script>

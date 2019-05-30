@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+
+        <style>
+        body{
+	background: #ddd
+}
+.loginwarrp{
+	margin: 250px auto;
+    width: 400px;
+    padding: 30px 50px;
+    background: #FFFFFF;
+    overflow: hidden;
+    font-size: 14px;
+    font-family: '微软雅黑','文泉驿正黑','黑体';
+}
+.loginwarrp .logo{
+	width:100%;
+	height:44px;
+	line-height: 44px;
+	font-size: 20px;
+	text-align: center;
+	border-bottom:1px solid #ddd;
+}
+.loginwarrp .login_form{
+	margin-top: 15px;
+}
+.loginwarrp .login_form .login-item{
+	padding: 2px 8px;
+	border:1px solid #dedede;
+	border-radius: 8px;
+	margin-top: 10px;
+}
+.loginwarrp .login_form .login_input{
+	height: 35px;
+    border: none;
+    line-height: 35px;
+    width: 200px;
+    font-size: 14px;
+    outline: none;
+}
+.loginwarrp .login_form .verify{
+	float: left;
+    width: 381px;
+}
+.loginwarrp .verify .verify_input{
+	width: 160px;
+}
+.loginwarrp .verifyimg{
+	height: 30px;
+    margin: 20px 0 0 20px;
+}
+.loginwarrp .login-sub{
+	text-align: center;
+}
+.loginwarrp .login-sub input{
+	margin-top:15px;
+    background: #45B549;
+    line-height: 35px;
+    width: 150px;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-family: '微软雅黑','文泉驿正黑','黑体';
+    border: none;
+    border-radius: 5px;
+}
+.loginwarrp .login_form .login-item .error{
+	color: #F00;
+	font-family: '微软雅黑','文泉驿正黑','黑体';
+}
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul,li {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a{
+	text-decoration: none;
+	color: #333;
+	display: block;
+}
+body{
+    font-size: 14px;
+}
+.clearfix{
+	zoom:1;
+}
+.clearfix:after{
+	content:".";
+	display:block;
+	visibility:hidden;
+	height:0;
+	clear:both;
+}
+.fl,.l{
+	float: left;
+}
+.fr,.r{
+	float: right;
+}
+/*margin-top*/
+.mt10{
+	margin-top: 10px;
+}
+.mt15{
+	margin-top: 15px;
+}
+.mt20{
+	margin-top: 20px;
+}
+.mt5{
+	margin-top: 5px;
+}
+.mt0{
+	margin-top: 0px;
+}
+/*padding-left*/
+.pl15{
+	padding-left: 15px;
+}
+.code
+    {
+        font-family: Arial;
+    font-style: italic;
+    color: blue;
+    font-size: 30px;
+    border: 0;
+    padding: 2px 3px;
+    letter-spacing: 3px;
+    font-weight: bolder;
+    float: left;
+    cursor: pointer;
+    width: 92px;
+    height: 29px;
+    line-height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #D8B7E3;
+    margin-top: 15px;
+    margin-left: 35px;
+     }
+        </style>
+</head>
+<body>
+<div class="page">
+	<div class="loginwarrp">
+		<div class="logo">管理员登陆</div>
+        <div class="login_form">
+			<form id="Login" name="Login" method="post" onsubmit="" action="">
+				<li class="login-item">
+					<span>用户名：</span>
+					<input type="text" id="username" name="UserName" class="login_input" >
+                                        <span id="count-msg" class="error"></span>
+				</li>
+				<li class="login-item">
+					<span>密　码：</span>
+					<input type="password" id="password" name="password" class="login_input" >
+                                        <span id="password-msg" class="error"></span>
+				</li>
+				<li class="login-item verify">
+					<span>验证码：</span>
+                    <input type="text" id="inputCode" name="CheckCode"  placeholder="请输入验证码" class="login_input verify_input">
+                    <span class="codetip"></span>
+                </li>
+                <div id="checkCode" class="code"  onclick="createCode(4)" ></div>
+				<div class="clearfix"></div>
+				<li class="login-sub">
+					<input class="submit" type="submit" onclick="validateCode()" name="Submit" value="登录" />
+                                        <input type="reset" name="Reset" value="重置" />
+				</li>
+           </form>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+		window.onload = function() {
+			var config = {
+				vx : 4,
+				vy : 4,
+				height : 2,
+				width : 2,
+				count : 100,
+				color : "121, 162, 185",
+				stroke : "100, 200, 180",
+				dist : 6000,
+				e_dist : 20000,
+				max_conn : 10
+			}
+			CanvasParticle(config);
+			createCode(4);
+		}
+    $(function(){
+	$('#username').focus().blur(checkName);
+	$('#password').blur(checkPassword);
+});
+
+function checkName(){
+	var name = $('#username').val();
+	if(name == null || name == ""){
+		//提示错误
+		$('#count-msg').html("用户名不能为空");
+		return false;
+	}
+	var reg = /^\w{3,10}$/;
+	if(!reg.test(name)){
+		$('#count-msg').html("输入3-10个字母或数字或下划线");
+		return false;
+	}
+	$('#count-msg').empty();
+	return true;
+}
+function checkPassword(){
+	var password = $('#password').val();
+	if(password == null || password == ""){
+		//提示错误
+		$('#password-msg').html("密码不能为空");
+		return false;
+	}
+	var reg = /^\w{3,10}$/;
+	if(!reg.test(password)){
+		$('#password-msg').html("输入3-10个字母或数字或下划线");
+		return false;
+	}
+	$('#password-msg').empty();
+	return true;
+}
+
+    //生成验证码的方法
+    function createCode(length) {
+        var code = "";
+        var codeLength = parseInt(length); //验证码的长度
+        var checkCode = document.getElementById("checkCode");
+        ////所有候选组成验证码的字符，当然也可以用中文的
+        var codeChars = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+        'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
+        //循环组成验证码的字符串
+        for (var i = 0; i < codeLength; i++)
+        {
+            //获取随机验证码下标
+            var charNum = Math.floor(Math.random() * 62);
+            //组合成指定字符验证码
+            code += codeChars[charNum];
+        }
+        if (checkCode)
+        {
+            //为验证码区域添加样式名
+            checkCode.className = "code";
+            //将生成验证码赋值到显示区
+            checkCode.innerHTML = code;
+        }
+    }
+
+    //检查验证码是否正确
+    function validateCode()
+    {
+        //获取显示区生成的验证码
+        var checkCode = document.getElementById("checkCode").innerHTML;
+        //获取输入的验证码
+        var inputCode = document.getElementById("inputCode").value;
+        console.log(checkCode);
+        console.log(inputCode);
+    if (inputCode.toUpperCase() != checkCode.toUpperCase())
+        {
+
+            $('.codetip').text('验证码输入有误！')
+            createCode(4);
+        }
+        else
+        {
+            $('.codetip').text('验证码正确！')
+        }
+	}
+	$(function(){
+$('.submit').on('click',function(){
+    $.ajax({
+        type:'post',
+        url:'http://127.0.0.1/js1810/bailianshangcheng/h51810/front/php/admin.php',
+        data:{
+            name:$('#username').val(),
+            password:$('#password').val()
+    },
+    dataType:'json'
+    }).done(function(data){
+        console.log(data)
+        if(!data){
+            alert('用户名或密码错误，请重新输入');
+            $('#username').val('');
+            $('#password').val('');
+        }else{
+            alert('登陆成功');
+            location.href='http://127.0.0.1/js1810/bailianshangcheng/h51810/front/index1.html';
+        }
+    })
+})
+
+})
+	</script>
+	<script type="text/javascript" src="js/canvas-particle.js"></script>
+</body>
+</html>

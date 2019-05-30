@@ -1,0 +1,107 @@
+a {
+  text-decoration: none; }
+
+li {
+  list-style: none; }
+
+.footer {
+  min-width: 1190px;
+  margin: 0 auto;
+  clear: both; }
+
+.footer_top {
+  background: #f3f3f3;
+  min-width: 1190px;
+  padding: 24px 0;
+  clear: both; }
+
+.footer_top_center {
+  width: 1100px;
+  height: 168px;
+  margin: 0 auto; }
+.footer_top_center .list {
+  float: left;
+  width: 200px;
+  margin: 0 10px;
+  display: inline-block; }
+.footer_top_center .list .title {
+  height: 40px;
+  line-height: 40px;
+  color: #000;
+  font-size: 16px; }
+.footer_top_center .list .title i {
+  display: inline-block;
+  float: left;
+  margin-right: 15px;
+  overflow: hidden; }
+.footer_top_center .list .title .icon_1 {
+  display: block;
+  width: 40px;
+  height: 40px;
+  background: url("../img/footer1200_sprite.png") no-repeat 0px 0px; }
+.footer_top_center .list .title .icon_2 {
+  display: block;
+  width: 40px;
+  height: 40px;
+  background: url("../img/footer1200_sprite.png") no-repeat 0px -40px; }
+.footer_top_center .list .title .icon_3 {
+  display: block;
+  width: 40px;
+  height: 40px;
+  background: url("../img/footer1200_sprite.png") no-repeat 0px -80px; }
+.footer_top_center .list .title .icon_4 {
+  display: block;
+  width: 40px;
+  height: 40px;
+  background: url("../img/footer1200_sprite.png") no-repeat 0px -120px; }
+.footer_top_center .list .title .icon_5 {
+  display: block;
+  width: 40px;
+  height: 40px;
+  background: url("../img/footer1200_sprite.png") no-repeat 0px -160px; }
+.footer_top_center .list ul {
+  margin-left: 55px;
+  font-size: 13px;
+  line-height: 26px;
+  color: #555; }
+.footer_top_center .list ul a {
+  color: #555; }
+.footer_top_center .list ul a:hover {
+  text-decoration: underline;
+  color: #ff6f6f; }
+
+.footer_btm {
+  line-height: 24px;
+  text-align: center;
+  padding: 15px 0 0;
+  color: #999;
+  background: #f3f3f3;
+  font-size: 12px; }
+.footer_btm div a {
+  color: #333; }
+.footer_btm div a:hover {
+  color: #ff6f6f; }
+.footer_btm a {
+  color: #333; }
+.footer_btm span {
+  padding: 0 8px; }
+.footer_btm .police a {
+  display: inline-block;
+  text-decoration: none;
+  height: 20px;
+  line-height: 20px;
+  margin-right: 10px; }
+.footer_btm .police img {
+  float: left;
+  display: inline;
+  width: 20px;
+  height: 21px; }
+.footer_btm .police span {
+  float: left;
+  display: inline;
+  height: 20px;
+  line-height: 20px;
+  margin: 0 0 0 5px;
+  color: #999; }
+
+/*# sourceMappingURL=footer.css.map */

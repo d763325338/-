@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="网上购物,网上商城,进口商品，生鲜食品，家用电器，手机数码，嘉院">
+	<link rel="shortcut icon" href="http://www.bl.com/favicon.ico">
+    <link rel="stylesheet" href="css/cart.css">
+	<script src="script/thirdplugins/jquery.js"></script>
+	<script src="script/js/cookie.js"></script>
+	<script src="script/js/cart.js"></script>
+	<script src="script/js/map.js"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=FXLnG7PVLbHk35nNEAmftNHTvkdkhMyD"></script>
+<script type="text/javascript" src="http://developer.baidu.com/map/jsdemo/demo/convertor.js"></script>
+	<title>购物车</title>
+	<style>
+		.tangram-suggestion{
+	  display: none;
+	}
+		</style>
+</head>
+<body>
+    <div class="top">
+		<div class="wrap">
+			<div class="top_main">
+				<div class="top_name" title="嘉院集团旗下全渠道电商平台">
+					<span></span>
+					<div>嘉院集团旗下全渠道电商平台</div>
+					<b></b>
+				</div>
+				<div class="top_main_left">
+					<a href="javascript:;">
+						<span>网站导航</span>
+						<b></b>
+					</a>
+					<div class="top_main_left_show">
+						<a href="javascript:;">嘉院集团官网</a>
+						<a href="javascript:;">安付宝网</a>
+						<a href="javascript:;">第一医药</a>
+						<a href="javascript:;">OK会员卡专区</a>
+					</div>
+				</div>
+
+				<div class="top_main_mid">
+					<a href="javascript:;">消息</a>
+				</div>
+				<div class="top_main_right">
+					<ul>
+						<li class="top_main_right_login">
+							<a href="http://127.0.0.1/js1810/bailianshangcheng/h51810/bailianshangcheng/src/registor.html">
+								<i></i>
+								<span>&nbsp;请登录</span>
+							</a>
+							<a href="http://127.0.0.1/js1810/bailianshangcheng/h51810/bailianshangcheng/src/login.html">
+								<span>注册</span>
+							</a>
+						</li>
+						<li class="list">
+							<i></i>
+							<a href="javascript:;">
+								<span>我的订单</span>
+							</a>
+						</li>
+						<li class="mybl">
+							<i></i>
+							<a href="javascript:;">
+								<span>我的嘉院</span>
+								<b></b>
+							</a>
+							<div class="mybl_show">
+								<a href="javascript:;">我的订单</a>
+								<a href="javascript:;">我的评分</a>
+								<a href="javascript:;">我的积分</a>
+								<a href="javascript:;">我的收藏</a>
+								<a href="javascript:;">我的优惠券</a>
+							</div>
+						</li>
+						<li class="pay">
+							<i></i>
+							<a href="javascript:;">
+								<span>充值缴费</span>
+								<b></b>
+							</a>
+							<div class="pay_show">
+								<div>
+									<p>水电煤缴费</p>
+									<a href="javascript:;">缴费首页</a>
+									<a href="javascript:;">水费缴费</a>
+									<a href="javascript:;">电费缴费</a>
+									<a href="javascript:;">煤气缴费</a>
+								</div>
+								<div>
+									<p>手机充值</p>
+									<a href="javascript:;">手机充值</a>
+									<a href="javascript:;">流量充值</a>
+									<a href="javascript:;">更多充值</a>
+								</div>
+								<div>
+									<p>其他缴费</p>
+									<a href="javascript:;">固话/宽带充值</a>
+									<a href="javascript:;">铁通缴费</a>
+									<a href="javascript:;">有线电视缴费</a>
+								</div>
+								<div>
+									<p>游戏点卡</p>
+									<a href="javascript:;">腾讯Q币充值</a>
+									<a href="javascript:;">盛大点券充值</a>
+									<a href="javascript:;">更多游戏</a>
+								</div>
+							</div>
+						</li>
+						<li class="sevice">
+							<i></i>
+							<a href="javascript:;">
+								<span>客户服务</span>
+								<b></b>
+							</a>
+							<div class="service_show">
+								<a href="javascript:;">在线客服</a>
+								<a href="javascript:;">帮助中心</a>
+							</div>
+						</li>
+						<li class="zhangshangbl">
+							<i></i>
+							<a href="javascript:;">
+								<span>掌上嘉院</span>
+								<b></b>
+							</a>
+							<div class="zhangshangbl_show">
+								<div class="left">
+									<img src="http://img23.iblimg.com/market-2/images/activity/1807592795.jpg" alt="">
+									<p>i嘉院微信</p>
+									<span>扫一扫关注</span>
+								</div>
+								<div class="right">
+									<img src="http://img22.iblimg.com/market-2/images/activity/1849148942.png" alt="">
+									<p>i嘉院APP</p>
+									<span>手机购物更方便</span>
+								</div>
+							</div>
+						</li>
+						<li class="cart">
+							<i></i>
+							<a href="http://127.0.0.1/js1810/bailianshangcheng/h51810/bailianshangcheng/src/cart.html">
+								<span>购物车</span>
+							</a>
+							<i></i>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+    <div class="header">
+        <div class="wrap">
+            <div class="logo">
+                <div ><a href="http://127.0.0.1/js1810/bailianshangcheng/h51810/bailianshangcheng/src/index1.html"><img src="img/logo.png" alt=""></a></div>
+                <div class="title" >购物车</div>
+                <div class="login-message"> 现在&nbsp;<a href="http://127.0.0.1/js1810/bailianshangcheng/h51810/bailianshangcheng/src/registor.html">登录</a>,您购物车中的商品将会被永久保存</div>
+            </div>
+        </div>
+    </div>
+    <div class="cart_title">
+        <div class="wrap">
+            <div class="cart_title_content">
+                <div class="name">全部商品<span>0</span></div>
+                <div class="send">
+                    <div class="address">配送至</div>
+                    <div class="dizhi"><span>嘉兴市 南湖区</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cart_table">
+        <div class="wrap">
+            <div class="cart_table_head">
+                <div><input class="allsel" type="checkbox"><span>全选</span></div>
+                <div class="product"><span>商品信息</span></div>
+                <div class="product_item_price"><span>单价（元）</span></div>
+                <div class="product_count"><span>件数</span></div>
+                <div class="product_total_price"><span>金额（元）</span></div>
+                <div class="product_action"><span>操作</span></div>
+            </div>
+            <div class="goods">
+                <ul>
+                    <li class="goods_box">
+                        <div >
+                            <div><input type="checkbox"></div>
+                            <a href="javascript:;"><img src="http://Img.iblimg.com/photo-41/2000/1876625371_200x200.jpg" alt=""></a>
+                            <div class="name">
+                                <a href="javascript:;"> 乐事 无限 薯片 组合包 104g*3 休闲膨化 办公室零食 </a>
+                            </div>
+                            <div class="goods_item_price"><p>¥<span>19.80</span></p><br><i>抢购</i></div>
+                            <div class="goods_count">
+                                <button id="reduce">-</button>
+                                <input id="product_num" type="text" value="1">
+                                <button id="add">+</button></div>
+                            <div class="goods_total_price">￥<span>19.80</span></div>
+                            <div class="goods_action">
+                                <!-- <a href="javascript:;">移入收藏夹</a> -->
+                                <a class="delete" href="javascript:;">删除</a>
+                            </div>
+                        </div>
+					</li>
+					<div class="empty-cart">
+						<i></i>
+						<div>购物车快饿扁了 /(ToT)/~~</div>
+						<div>尝试买些东西再回来看看，快去 <a href="http://127.0.0.1/js1810/bailianshangcheng/h51810/bailianshangcheng/src/index1.html">i嘉院首页</a> 挑选商品吧！</div>
+					</div>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="cart_pay">
+        <div class="wrap">
+            <div class="goods_payfrom">
+                <div><input class="allsel" type="checkbox"><span>全选</span></div>
+                <div class="action">
+                    <a class="all_delete" href="javascript:;"><i></i>删除</a>
+                    <!-- <a href="javascript:;">清除失效商品</a>
+                    <a href="javascript:;">移入收藏夹</a> -->
+                </div>
+                <div class="cart_count">
+                    <a href="javascript:;">已选择<span>0</span>件商品</a>
+                </div>
+                <div class="cart_money">
+                    <span>商品金额（不含运费）：</span>
+                    <span class="cart_totalprice" ><i>￥</i><b>0</b></span>
+                    <span><i>优惠</i><b>-￥0.00</b></span>
+                </div>
+                <div class="pay">
+                   <a href="javascript:;">去结算</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+		<div class="footer_top">
+			<div class="wrap">
+				<div class="footer_top_center">
+					<div class="list">
+						<div class="title">
+							<i class="icon_1"></i>新手入门
+						</div>
+						<ul>
+							<li><a href="javascript:;">购物流程</a></li>
+							<li><a href="javascript:;">会员介绍</a></li>
+							<li><a href="javascript:;">常见问题</a></li>
+							<li><a href="javascript:;">发票说明</a></li>
+							<li><a href="javascript:;">练习客服</a></li>
+						</ul>
+					</div>
+					<div class="list">
+						<div class="title">
+							<i class="icon_2"></i>配送服务
+						</div>
+						<ul>
+							<li><a href="javascript:;">配送范围及运费</a></li>
+							<li><a href="javascript:;">配送进度查询</a></li>
+							<li><a href="javascript:;">自提服务</a></li>
+							<li><a href="javascript:;">商品验货与签收</a></li>
+						</ul>
+					</div>
+					<div class="list">
+						<div class="title">
+							<i class="icon_3"></i>支付方式
+						</div>
+						<ul>
+							<li><a href="javascript:;">货到付款</a></li>
+							<li><a href="javascript:;">在线支付</a></li>
+						</ul>
+					</div>
+					<div class="list">
+						<div class="title">
+							<i class="icon_4"></i>售后服务
+						</div>
+						<ul>
+							<li><a href="javascript:;">退换货政策</a></li>
+							<li><a href="javascript:;">退换货流程</a></li>
+							<li><a href="javascript:;">退款说明</a></li>
+						</ul>
+					</div>
+					<div class="list">
+						<div class="title">
+							<i class="icon_5"></i>商家支持
+						</div>
+						<ul>
+							<li><a href="javascript:;">商家入驻</a></li>
+							<li><a href="javascript:;">商家规则</a></li>
+							<li><a href="javascript:;">商家常见问题</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer_btm">
+			<div>
+				<a href="javascript">关于我们</a><span>|</span>
+				<a href="javascript">联系我们</a><span>|</span>
+				<a href="javascript">诚征英才</a><span>|</span>
+				<a href="javascript">友情链接</a><span>|</span>
+				<a href="javascript">新零售合作</a><span>|</span>
+			</div>
+			<div class="copy">嘉院集团有限公司版权所有 <span>|</span>  客服电话：400-900-8800  <span>|</span> 沪ICP备15028847号</div>
+			<a href="javascript:;">互联网药品信息服务资质证书编号：沪-（非营业性）-2016-0044</a>
+			<br>
+			<a href="javascript:;">全渠道增值电信业务经营许可证</a>
+			<div class="police">
+				<a href="javascript;;">
+					<img src="img/gongan.png" alt="">
+					<span>沪公网安备  31010102002366号</span>
+				</a>
+				<a href="javascript;;">
+					<img src="img/wangjing.png" alt="">
+					<span>网购大家评</span>
+				</a>
+				<a href="javascript;;">
+					<img src="img/gongs.png" alt="">
+					<span>上海工商</span>
+				</a>
+				<a href="javascript;;">
+					<img src="img/zhizhao.png" alt="">
+					<span>经营执照</span>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="mymap" style="position:absolute;left: 408px;
+    top: 159px;background: white;display: none;">
+		<div id="map" class="map" style="width: 500px;height: 500px;border:1px solid #666;float:left;"></div>
+	<div id="txt" class="txt" style="float:left;margin-left:20px;">
+    <input type="text" id="keyword" class="keyword" placeholder="请输入关键字" style="width: 200px;height: 30px;display: block;margin-bottom:10px;border:1px solid #ccc;">
+    <input type="text" id="province" placeholder="显示具体省" readonly style="background: #dcdcdc;width: 200px;height: 30px;display: block;margin-bottom:10px;border:1px solid #ccc;">
+    <input type="text" id="city" placeholder="显示具体市" readonly style="background: #dcdcdc;width: 200px;height: 30px;display: block;margin-bottom:10px;border:1px solid #ccc;">
+	<input type="text" id="address" placeholder="显示具体地址" readonly style="background: #dcdcdc;width: 200px;height: 30px;display: block;margin-bottom:10px;border:1px solid #ccc;">
+	<input class="subaddress" type="button" value="提交地址">
+	<input class="closemap" type="button" value="取消">
+	</div>
+	</div>
+</body>
+</html>
